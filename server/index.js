@@ -1,10 +1,9 @@
 const express = require('express');
 let app = express();
+var path = require("path"); //is this needed?
 
-// TODO - your code here!
-// Set up static file service for files in the `client/dist` directory.
-// Webpack is configured to generate files in that directory and
-// this server must serve those files when requested.
+app.use(express.json()) //root, [options]
+app.use(express.static('client/dist'));
 
 app.post('/repos', function (req, res) {
   // TODO - your code here!
@@ -23,3 +22,6 @@ let port = 1128;
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
+
+
+//app.use('/static', express.static(path.join(__dirname, 'public')))
